@@ -21,8 +21,10 @@ const DetailsScreen = () => {
   };
 
   const handleSave = () => {
-    dispatch(bookSlot({ time, ...form }));
-    navigate("/");
+    if(form?.firstName){
+      dispatch(bookSlot({ time, ...form }));
+      navigate("/");
+    } 
   };
 
   const handleClear = () => {
@@ -34,7 +36,7 @@ const DetailsScreen = () => {
     <div className="container mt-4">
       <h2 className="text-primary">Appointment for {time}</h2>
       <div className="mb-3">
-        <input className="form-control" name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} />
+        <input className="form-control" name="firstName" placeholder="First Name (Required*)" value={form.firstName} onChange={handleChange} />
       </div>
       <div className="mb-3">
         <input className="form-control" name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleChange} />
